@@ -7,7 +7,7 @@ What is the largest prime factor of the number 600851475143 ?
 */
 
 extern crate euler;
-use euler::{count_factors,prime_factors};
+use euler::prime_factors;
 
 pub fn problem3() -> uint {
   let number = 600851475143;
