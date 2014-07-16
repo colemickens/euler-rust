@@ -3,3 +3,8 @@
 name = "colemickens-euler-rust"
 version = "0.0.0"
 authors = [ "cole.mickens@gmail.com" ]
+
+[[lib]]
+
+name = "euler"
+crate-type = ["dylib", "rlib"]
