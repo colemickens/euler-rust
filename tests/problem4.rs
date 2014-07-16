@@ -42,7 +42,6 @@ pub fn problem4() -> uint {
   let num_of_digits = 3;
 
   // this is awfully inefficient
-  
   let mut max = 0;
   let upper_bound = num::pow(10u, num_of_digits);
   for x in range(1u, upper_bound) {
@@ -57,4 +56,9 @@ pub fn problem4() -> uint {
   }
 
   max
+}
+
+#[test]
+pub fn test_problem4() {
+  assert_eq!(problem4(), 906609);
 }

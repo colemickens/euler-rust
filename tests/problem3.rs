@@ -22,7 +22,6 @@ fn prime_factors(number: uint) -> Vec<uint> {
         break;
       }
     }
-    println!("test {}", test);
   }
   return factors
 }
@@ -32,8 +31,11 @@ pub fn problem3() -> uint {
 
   let mut factors = prime_factors(number);
   
-  println!("got factors")
-  
   factors.sort();
   *(factors.iter().max_by(|&x| x).unwrap())
+}
+
+#[test]
+pub fn test_problem3() {
+  assert_eq!(problem3(), 6857);
 }

@@ -13,3 +13,8 @@ pub fn problem1() -> uint {
     .filter(|i| i % 3 == 0 || i % 5 == 0)
     .fold(0, |p, e| { p + e })
 }
+
+#[test]
+pub fn test_problem1() {
+  assert_eq!(problem1(), 233168);
+}

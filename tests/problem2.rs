@@ -39,3 +39,8 @@ pub fn problem2() -> uint {
     .take_while(|n| *n < limit)
     .fold(0, |p, e| { p + e })
 }
+
+#[test]
+pub fn test_problem2() {
+  assert_eq!(problem2(), 4613732);
+}

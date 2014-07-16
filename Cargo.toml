@@ -1,0 +1,5 @@
+[package]
+
+name = "colemickens-euler-rust"
+version = "0.0.0"
+authors = [ "cole.mickens@gmail.com" ]
