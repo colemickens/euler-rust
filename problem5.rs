@@ -6,10 +6,13 @@ Problem 5
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 */
 extern crate collections;
-use self::collections::bitv::Bitv;
+use std::collections::HashMap;
+use std::collections::bitv::Bitv;
 use std::iter::range_inclusive;
 use std::iter::range_step_inclusive;
+use std::num;
 use helpers::prime_factors;
+use helpers::count_factors;
 mod helpers;
 
 fn lcm(factors: Vec<Vec<uint>>) -> uint
@@ -33,19 +36,37 @@ fn lcm(factors: Vec<Vec<uint>>) -> uint
   
   let mut prime_summary_list = vec!();
 
-  for line_of_factors in factors {
+  for line_of_factors in factors.iter() {
     prime_summary_list.push(count_factors(line_of_factors));
   }
 
-  // get unique primes from the list of lists
-  prime_summary_list.flat_map();
+  for factors in prime_summary_list.iter() {
+    println!("{}", factors);
+  }
 
-  0
+  let mut max_of_factors: HashMap<uint, uint> = HashMap::new();
+  prime_summary_list.iter().advance(|next| {
+    println!("next: {}", next);
+    for (prime, count) in next.iter() {
+      println!("check {}, {}", prime, count);
+      max_of_factors.insert_or_update_with(*prime, *count, |&existing_key, existing_count| {
+        println!("dupe");
+        if *count > *existing_count {
+          *existing_count = *count;
+        }
+      });
+    }
+    true
+  });
+
+  let sum = max_of_factors.iter().fold(1, |sum, (&prime, &count)| {
+    sum * num::pow(prime, count)
+  });
+  sum
 }
 
 pub fn problem5() -> uint {
-  // let numbers = count(1u, 1).take(20);
-  let numbers = vec!(25u, 30);
+  let numbers: Vec<uint> = range(1u, 20).collect();
 
   let mut factors: Vec<Vec<uint>> = vec!();
   for n in numbers.iter() {
