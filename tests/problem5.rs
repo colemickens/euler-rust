@@ -5,16 +5,15 @@ Problem 5
 
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 */
-#![feature(globs)]
 
 extern crate euler;
+use euler::{count_factors,prime_factors};
 
 use std::collections::HashMap;
 use std::collections::bitv::Bitv;
 use std::iter::range_inclusive;
 use std::iter::range_step_inclusive;
 use std::num;
-use euler::*;
 
 fn lcm(factors: Vec<Vec<uint>>) -> uint
 {

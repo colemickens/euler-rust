@@ -5,11 +5,9 @@ The prime factors of 13195 are 5, 7, 13 and 29.
 
 What is the largest prime factor of the number 600851475143 ?
 */
-#![feature(globs)]
 
 extern crate euler;
-
-use euler::*;
+use euler::{count_factors,prime_factors};
 
 pub fn problem3() -> uint {
   let number = 600851475143;
