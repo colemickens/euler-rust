@@ -1,5 +1,5 @@
 /*
-Problem 4
+Problem 004
 
 A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
 
@@ -38,7 +38,7 @@ pub fn is_palindrome(number: uint) -> bool {
   return true;
 }
 
-pub fn problem4() -> uint {
+pub fn problem004() -> uint {
   let num_of_digits = 3;
 
   // this is awfully inefficient
@@ -59,6 +59,6 @@ pub fn problem4() -> uint {
 }
 
 #[test]
-pub fn test_problem4() {
-  assert_eq!(problem4(), 906609);
+pub fn test_problem004() {
+  assert_eq!(problem004(), 906609);
 }

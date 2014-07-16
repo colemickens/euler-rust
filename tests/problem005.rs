@@ -1,5 +1,5 @@
 /*
-Problem 5
+Problem 005
 
 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
@@ -32,7 +32,7 @@ fn lcm(factors: Vec<Vec<uint>>) -> uint
   sum
 }
 
-pub fn problem5() -> uint {
+pub fn problem005() -> uint {
   let numbers: Vec<uint> = range(1u, 20).collect();
 
   let mut factors: Vec<Vec<uint>> = vec!();
@@ -44,6 +44,6 @@ pub fn problem5() -> uint {
 }
 
 #[test]
-pub fn test_problem5() {
-  assert_eq!(problem5(), 232792560);
+pub fn test_problem005() {
+  assert_eq!(problem005(), 232792560);
 }
