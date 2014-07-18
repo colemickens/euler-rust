@@ -32,12 +32,10 @@ fn lcm(factors: Vec<Vec<uint>>) -> uint
   sum
 }
 
-pub fn problem005() -> uint {
-  let numbers: Vec<uint> = range(1u, 20).collect();
-
+pub fn problem005(lower_limit: uint, upper_limit: uint) -> uint {
   let mut factors: Vec<Vec<uint>> = vec!();
-  for n in numbers.iter() {
-    factors.push(prime_factors(*n));
+  for n in range(lower_limit, upper_limit) {
+    factors.push(prime_factors(n));
   }
 
   lcm(factors)
@@ -45,5 +43,6 @@ pub fn problem005() -> uint {
 
 #[test]
 pub fn test_problem005() {
-  assert_eq!(problem005(), 232792560);
+  assert_eq!(problem005(1, 10), 2520);
+  assert_eq!(problem005(1, 20), 232792560);
 }

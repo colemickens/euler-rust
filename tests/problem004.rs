@@ -38,9 +38,7 @@ pub fn is_palindrome(number: uint) -> bool {
   return true;
 }
 
-pub fn problem004() -> uint {
-  let num_of_digits = 3;
-
+pub fn problem004(num_of_digits: uint) -> uint {
   // this is awfully inefficient
   let mut max = 0;
   let upper_bound = num::pow(10u, num_of_digits);
@@ -60,5 +58,6 @@ pub fn problem004() -> uint {
 
 #[test]
 pub fn test_problem004() {
-  assert_eq!(problem004(), 906609);
+  assert_eq!(problem004(2), 9009);
+  assert_eq!(problem004(3), 906609);
 }

@@ -11,7 +11,7 @@ pub fn problem001() -> uint {
 
   range(0u, max)
     .filter(|i| i % 3 == 0 || i % 5 == 0)
-    .fold(0, |p, e| { p + e })
+    .fold(0, |last, next| last + next)
 }
 
 #[test]

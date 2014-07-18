@@ -9,12 +9,13 @@ What is the 10_001st prime number?
 extern crate euler;
 use euler::{PrimeIter};
 
-fn problem007() -> uint {
+fn problem007(n: uint) -> uint {
   let mut prime_iter = PrimeIter::new();
-  prime_iter.nth(10000).unwrap()
+  prime_iter.nth(n).unwrap()
 }
 
 #[test]
 fn test_problem007() {
-  assert_eq!(problem007(), 104743)
+  assert_eq!(problem007(5), 13)
+  assert_eq!(problem007(10_000), 104743)
 }

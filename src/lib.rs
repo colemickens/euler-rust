@@ -8,14 +8,12 @@ pub fn prime_factors(number: uint) -> Vec<uint> {
   while number > 1 {
     while number % test == 0 {
       factors.push(test);
-      println!("found: {}", test);
       number = number / test;
     }
     test = test + 1;
     if test * test > number {
       if number > 1 {
         factors.push(number);
-        println!("found: {}", test);
         break;
       }
     }
@@ -53,14 +51,12 @@ pub fn count_factors(foo: &Vec<uint>) -> HashMap<uint, uint> {
 // An iterator that yields prime numbers
 pub struct PrimeIter {
   counter: uint,
-  found_primes: Vec<uint>,
 }
 
 impl PrimeIter {
   pub fn new() -> PrimeIter {
     PrimeIter{
       counter: 2u,
-      found_primes: vec!(),
     }
   }
 }
@@ -77,7 +73,6 @@ impl Iterator<uint> for PrimeIter {
         }
         if temp * temp > self.counter {
           let found_prime = self.counter;
-          self.found_primes.push(found_prime);
           self.counter = self.counter + 1;
           return Some(found_prime);
         }
@@ -85,3 +80,35 @@ impl Iterator<uint> for PrimeIter {
     }
   }
 }
+
+// A queue that I can inspect
+// might copy more than it should
+// Used ringbuf in std instead
+/*
+pub <T> struct Queue {
+  contents: Vec<T>,
+  index: uint,
+  length: uint,
+  size: uint,
+}
+
+pub impl Queue {
+  pub fn with_capacity(length: uint) -> Queue {
+    return Queue{
+      contents: Vec::with_capacity(length);
+      index: 0,
+      length: length
+      size: 0,
+    };
+  }
+
+  pub fn push(val: T) {
+    let new_length = length + 1;
+    let index = new_length % size;
+  }
+
+  pub fn pop() -> T {
+
+  }
+}
+*/

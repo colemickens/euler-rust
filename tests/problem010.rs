@@ -6,11 +6,16 @@ The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 Find the sum of all the primes below two million.
 */
 
-fn problem010() -> uint {
-  142913828922
+extern crate euler;
+use euler::{PrimeIter};
+
+fn problem010(upper_limit: uint) -> uint {
+  let iter = PrimeIter::new();
+  iter.take_while(|&x| x < upper_limit).fold(0, |cur_sum, next| cur_sum + next)
 }
 
 #[test]
 fn test_problem010() {
-  assert_eq!(problem010(), 142913828922)
+  assert_eq!(problem010(10), 17);
+  assert_eq!(problem010(2_000_000), 142913828922);
 }

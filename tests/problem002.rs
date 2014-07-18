@@ -37,7 +37,7 @@ pub fn problem002() -> uint {
   FibIter::new()
     .filter(|n| n % 2 == 0)
     .take_while(|n| *n < limit)
-    .fold(0, |p, e| { p + e })
+    .fold(0, |prev, next| prev + next)
 }
 
 #[test]

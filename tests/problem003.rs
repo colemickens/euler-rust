@@ -9,9 +9,7 @@ What is the largest prime factor of the number 600851475143 ?
 extern crate euler;
 use euler::prime_factors;
 
-pub fn problem003() -> uint {
-  let number = 600851475143;
-
+pub fn problem003(number: uint) -> uint {
   let mut factors = prime_factors(number);
   
   factors.sort();
@@ -20,5 +18,6 @@ pub fn problem003() -> uint {
 
 #[test]
 pub fn test_problem003() {
-  assert_eq!(problem003(), 6857);
+  assert_eq!(problem003(13195), 29);
+  assert_eq!(problem003(600851475143), 6857);
 }
