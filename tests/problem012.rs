@@ -69,7 +69,7 @@ fn problem012(threshold: uint) -> uint {
     // we add one since 1 isn't returned as a factor
     let num_of_factors = primes_and_pows.iter().map(|(_, &power)| power).fold(1, |s, n| s*(n+1));
     
-    if num_of_factors > threshold {
+    if num_of_factors >= threshold {
       return triangle_sum;
     }
     count = count + 1;
