@@ -28,7 +28,7 @@ pub fn is_palindrome(number: uint) -> bool {
   let mut first_idx = 0;
 
   while first_idx < last_idx {
-    if digits.get(first_idx) != digits.get(last_idx) {
+    if digits[first_idx] != digits[last_idx] {
       return false;
     }
     first_idx = first_idx+1;

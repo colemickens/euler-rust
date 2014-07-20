@@ -20,23 +20,6 @@ We can see that 28 is the first triangle number to have over five divisors.
 What is the value of the first triangle number to have over five hundred divisors?
 */
 
-// Too slow
-/*
-fn problem012(num_of_factors: uint) -> uint {
-  let mut triangle_sum = 0u; 
-  let mut count = 1u;
-  loop {
-    triangle_sum = triangle_sum + count;
-    let factors: Vec<uint> = range(1, triangle_sum+1).filter(|&n| triangle_sum % n == 0).collect();
-    println!("({}): {}", triangle_sum, factors);
-    if factors.len() >= num_of_factors {
-      return triangle_sum;
-    }
-    count = count + 1;
-  }
-}
-*/
-
 /*
 28 = 2 * 2 * 7
 28 has five factors: 1, 2, 7, (2*2), (7*2), (7*2*2)
@@ -66,8 +49,12 @@ fn problem012(threshold: uint) -> uint {
     
     let primes_and_pows = count_factors(&prime_factors(triangle_sum));
     
-    // we add one since 1 isn't returned as a factor
-    let num_of_factors = primes_and_pows.iter().map(|(_, &power)| power).fold(1, |s, n| s*(n+1));
+
+    let num_of_factors = primes_and_pows
+      .iter()
+      .map(|(_, &power)| power)
+      // we add one since 1 isn't returned as a factor
+      .fold(1, |ps, n| ps*(n+1));
     
     if num_of_factors > threshold {
       return triangle_sum;
