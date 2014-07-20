@@ -9,7 +9,6 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 use std::num;
 
 pub fn is_palindrome(number: uint) -> bool {
-  // get digits into Vec<uint>
   let num_digits = ((number as f64).log10().floor() as uint) + 1;
   for i in range(0u, num_digits/2) {
     let left: uint = number / num::pow(10u, i) % 10;
