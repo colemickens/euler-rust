@@ -53,7 +53,7 @@ fn problem012(threshold: uint) -> uint {
     let num_of_factors = primes_and_pows
       .iter()
       .map(|(_, &power)| power)
-      // we add one since 1 isn't returned as a factor
+      // we add one since 1 isn't returned as a factor (n^0 == 1) (aka itself, in this ex, 28)
       .fold(1, |ps, n| ps*(n+1));
     
     if num_of_factors > threshold {
