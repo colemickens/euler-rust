@@ -22,11 +22,10 @@ pub fn is_palindrome(number: uint) -> bool {
 }
 
 pub fn problem004(num_of_digits: uint) -> uint {
-  // this is awfully inefficient
   let mut max = 0;
   let upper_bound = num::pow(10u, num_of_digits);
   for x in range(1u, upper_bound) {
-    for y in range(1u, upper_bound) {
+    for y in range(1u, x) {
       let test = x * y;
       if is_palindrome(test) {
         if test > max {
