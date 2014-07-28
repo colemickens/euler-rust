@@ -8,10 +8,11 @@ Find the sum of all the primes below two million.
 
 extern crate euler;
 use euler::{PrimeIter};
+use std::iter::AdditiveIterator;
 
 fn problem010(upper_limit: uint) -> uint {
   let iter = PrimeIter::new();
-  iter.take_while(|&x| x < upper_limit).fold(0, |cur_sum, next| cur_sum + next)
+  iter.take_while(|&x| x < upper_limit).sum()
 }
 
 #[test]

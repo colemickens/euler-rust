@@ -14,12 +14,14 @@ Find the difference between the sum of the squares of the first one hundred natu
 
 #![feature(globs)]
 use std::num;
-use std::iter::count;
+use std::iter::AdditiveIterator;
 
 fn problem006(num_to_take: uint) -> uint {
-  let square_of_sum = num::pow(count(1u, 1).take(num_to_take).fold(0, |old, new| old + new), 2);
-  let sum_of_squares = count(1u, 1).take(num_to_take).fold(0, |old, new| old + num::pow(new, 2));
+  let square_of_sum = num::pow(range(1u, num_to_take+1).sum(), 2);
+  let sum_of_squares = range(1u, num_to_take+1).map(|n| num::pow(n, 2)).sum();
   
+  println!("{} : {}", square_of_sum, sum_of_squares);
+
   square_of_sum - sum_of_squares
 }
 

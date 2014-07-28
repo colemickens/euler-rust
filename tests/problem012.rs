@@ -40,6 +40,7 @@ So then it's (3 choose 1) * (2 choose 1) == (3 * 2) == 6
 
 extern crate euler;
 use euler::{count_factors, prime_factors};
+use std::iter::MultiplicativeIterator;
 
 fn problem012(threshold: uint) -> uint {
   let mut triangle_sum = 0u; 
@@ -52,9 +53,8 @@ fn problem012(threshold: uint) -> uint {
 
     let num_of_factors = primes_and_pows
       .iter()
-      .map(|(_, &power)| power)
-      // we add one since 1 isn't returned as a factor (n^0 == 1) (aka itself, in this ex, 28)
-      .fold(1, |ps, n| ps*(n+1));
+      .map(|(_, &power)| power+1) // we add one since 1 isn't returned as a factor (n^0 == 1)
+      .product();
     
     if num_of_factors > threshold {
       return triangle_sum;

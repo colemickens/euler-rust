@@ -17,7 +17,6 @@ fn lcm(factors: Vec<Vec<uint>>) -> uint
   let mut max_of_factors: HashMap<uint, uint> = HashMap::new();
   for next in factors.iter().map(|factors| count_factors(factors)) {
     for (prime, count) in next.iter() {
-      //max_of_factors.insert_or_update_with(*prime, *count, |&existing_key, existing_count| {
       max_of_factors.insert_or_update_with(*prime, *count, |_, existing_count| {
         if *count > *existing_count {
           *existing_count = *count;
