@@ -50,7 +50,6 @@ fn problem012(threshold: uint) -> uint {
     
     let primes_and_pows = count_factors(&prime_factors(triangle_sum));
     
-
     let num_of_factors = primes_and_pows
       .iter()
       .map(|(_, &power)| power+1) // we add one since 1 isn't returned as a factor (n^0 == 1)

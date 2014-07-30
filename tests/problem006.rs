@@ -19,8 +19,6 @@ use std::iter::AdditiveIterator;
 fn problem006(num_to_take: uint) -> uint {
   let square_of_sum = num::pow(range(1u, num_to_take+1).sum(), 2);
   let sum_of_squares = range(1u, num_to_take+1).map(|n| num::pow(n, 2)).sum();
-  
-  println!("{} : {}", square_of_sum, sum_of_squares);
 
   square_of_sum - sum_of_squares
 }

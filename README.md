@@ -9,4 +9,4 @@ cargo test
 
 ## Results
 
-`cargo test` will currently run tests for problems #1 throrugh #12 (skipping #11)
+`cargo test` will currently run tests for problems #1 through #12 (skipping #11)

@@ -37,19 +37,15 @@ fn get_str() -> &'static str {
 }
 
 fn max_product_of_digits_of_sliding_window(window_size: uint) -> uint {
-  let digits: Vec<uint> = get_str().chars().map(|x| x.to_digit(10).unwrap()).collect();
-  let mut max_product = 0u;
-
-  for next in digits.as_slice().windows(window_size) {
-    let new_product: uint = next.iter().fold(1u, |cursum: uint, &next: &uint| cursum * next);
-
-    // let new_product: uint = next.iter().product();
-    // euler-rust/tests/problem008.rs:46:29: 46:50 error: failed to find an implementation of trait core::ops::Mul<&uint,&uint> for &uint
-    // euler-rust/tests/problem008.rs:46     let new_product: uint = next.iter().product();
-    
-    max_product = max(max_product, new_product);
-  }
-  max_product
+  get_str()
+    .chars()
+    .map(|x| x.to_digit(10).unwrap())
+    .collect::<Vec<uint>>() // necessary to collect because windows is impl'd on ImmutableVec
+    .as_slice()
+    .windows(window_size)
+    .map(|next_window| next_window.iter().map(|&n| n).product())
+    .max()
+    .unwrap_or(0u)
 }
 
 fn problem008(window_size: uint) -> uint {

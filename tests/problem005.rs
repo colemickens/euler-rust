@@ -8,12 +8,10 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 extern crate euler;
 use euler::{count_factors,prime_factors};
-
 use std::collections::HashMap;
 use std::num;
 
-fn lcm(factors: Vec<Vec<uint>>) -> uint
-{
+fn lcm(factors: Vec<Vec<uint>>) -> uint {
   let mut max_of_factors: HashMap<uint, uint> = HashMap::new();
   for next in factors.iter().map(|factors| count_factors(factors)) {
     for (prime, count) in next.iter() {
