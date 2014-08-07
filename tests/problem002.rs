@@ -18,7 +18,7 @@ struct FibIter {
 impl FibIter {
   fn new() -> FibIter {
     FibIter{
-      previous: 1,
+      previous: 0,
       current: 1,
     }
   }
