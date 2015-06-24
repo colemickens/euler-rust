@@ -13,26 +13,26 @@ use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::num;
 
 fn lcm(factors: Vec<Vec<u64>>) -> u64 {
-  let mut max_of_factors: HashMap<u64, u32> = HashMap::new();
+  let mut max_of_factors: HashMap<u64, u64> = HashMap::new();
   for next in factors.iter().map(|factors| count_factors(factors)) {
     for (prime, count) in next.iter() {
       match max_of_factors.entry(*prime) {
-        Occupied(entry) => {
-            if *count > *entry {
-              *entry = *count
+        Occupied(mut entry) => {
+            if *count > *entry.get() {
+              entry.insert(*count);
             }
         }
         Vacant(entry) => {
-          *entry = *count
+          entry.insert(*count);
         }
       }
     }
   }
 
   let sum = max_of_factors.iter().fold(1, |sum, (&prime, &count)| {
-    sum * prime.pow(count)
+    sum * prime.pow(count as u32)
   });
-  
+
   sum
 }
 
