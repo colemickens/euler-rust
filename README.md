@@ -2,7 +2,7 @@
 
 Solution to some [Project Euler](https://projecteuler.net/) problems.
 
-Problems #1 through #12 are solved, skipping #11, but only #1 through #4 are enabled.
+Problems #1 through #12 were solved, skipping #11, but only #1 through #4 are ported to `nightly`.
 
 ## Rust & Cargo Version
 
