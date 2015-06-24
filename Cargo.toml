@@ -4,7 +4,12 @@ name = "colemickens-euler-rust"
 version = "0.0.0"
 authors = [ "cole.mickens@gmail.com" ]
 
-[[lib]]
+
+[lib]
 
 name = "euler"
 crate-type = ["dylib", "rlib"]
+
+[dependencies]
+
+num = "0.1.24"
