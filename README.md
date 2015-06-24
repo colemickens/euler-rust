@@ -26,5 +26,43 @@ cargo test
 Expected output:
 
 ```
-[coming shortly]
+Running target/debug/euler-1944ef809f4ed3ee
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured
+
+Running target/debug/problem001-6f1540e3ac4ed47d
+
+running 1 test
+test test_problem001 ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured
+
+Running target/debug/problem002-453f5b00c9c6b9e6
+
+running 1 test
+test test_problem002 ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured
+
+Running target/debug/problem003-45764d2ce2ac66ee
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured
+
+Running target/debug/problem004-71d59b6cd1b9784a
+
+running 1 test
+test test_problem004 ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured
+
+Doc-tests euler
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured
+
 ```
