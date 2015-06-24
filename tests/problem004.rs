@@ -6,7 +6,6 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 Find the largest palindrome made from the product of two 3-digit numbers.
 */
 
-#[cfg(test)]
 fn is_palindrome(number: u64) -> bool {
   let num_digits = ((number as f32).log10().floor() as u32) + 1;
   for i in (0u32..num_digits/2) {
@@ -20,7 +19,6 @@ fn is_palindrome(number: u64) -> bool {
   return true;
 }
 
-#[cfg(test)]
 pub fn problem004(num_of_digits: u32) -> u64 {
   let mut max = 0;
   let upper_bound = 10u64.pow(num_of_digits);

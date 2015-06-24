@@ -26,11 +26,11 @@ pub fn prime_factors(number: u64) -> Vec<u64> {
 }
 
 // count the factors in a sorted list and return a hashmap
-pub fn count_factors(foo: &Vec<u32>) -> HashMap<u32, u32> {
+pub fn count_factors(foo: &Vec<u64>) -> HashMap<u64, u64> {
   let mut count_map = HashMap::new();
 
   // credit to kwantam in #rust
-  let last = foo.iter().fold((None, 0), |(p, l): (Option<u32>, u32), &nxt| {
+  let last = foo.iter().fold((None, 0), |(p, l): (Option<u64>, u64), &nxt| {
       match p {
         None => (Some(nxt), 1),
         Some(s) => {
@@ -54,22 +54,22 @@ pub fn count_factors(foo: &Vec<u32>) -> HashMap<u32, u32> {
 
 // An iterator that yields prime numbers
 pub struct PrimeIter {
-  counter: u32,
+  counter: u64,
 }
 
 impl PrimeIter {
   pub fn new() -> PrimeIter {
     PrimeIter{
-      counter: 2u32,
+      counter: 2u64,
     }
   }
 }
 
 impl Iterator for PrimeIter {
-  type Item = u32;
-  fn next(&mut self) -> Option<u32> {
+  type Item = u64;
+  fn next(&mut self) -> Option<u64> {
     loop {
-        let mut temp = 2u32;
+        let mut temp = 2u64;
         while temp * temp <= self.counter {
           if self.counter % temp == 0 {
             break;

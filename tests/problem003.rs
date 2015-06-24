@@ -18,9 +18,3 @@ pub fn problem003(number: u64) -> u64 {
   factors.sort();
   *(factors.iter().max_by(|&x| x).unwrap())
 }
-
-#[test]
-pub fn test_problem003() {
-  assert_eq!(problem003(13195), 29);
-  assert_eq!(problem003(600851475143), 6857);
-}
