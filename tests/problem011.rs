@@ -28,13 +28,15 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 */
 
+#![feature(convert)]
+
 use std::cmp::max;
 
-fn read_line(line: &'static str) -> Vec<uint> {
-  line.words().map(|x| from_str(x).unwrap()).collect()
+fn read_line(line: &'static str) -> Vec<u64> {
+  line.split_whitespace().map(|x| x.parse().unwrap()).collect()
 }
 
-fn read_grid() -> Vec<Vec<uint>> {
+fn read_grid() -> Vec<Vec<u64>> {
   vec!(
     read_line("08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08"),
     read_line("49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00"),
@@ -62,36 +64,38 @@ fn read_grid() -> Vec<Vec<uint>> {
 // TODO(colemickens): remove these when we finish this one, tired of it being noisy
 #[allow(dead_code)]
 #[allow(unused_variable)]
-fn check_position(grid: Vec<Vec<uint>>, row_c: uint, col_c: uint, n: uint) -> uint {
+fn check_position(grid: Vec<Vec<u64>>, row_c: u64, col_c: u64, n: u64) -> u64 {
   // check up and down
   // check right diagonal
 
   // This isn't done...
 
-  1 
+  1
 }
 
 // TODO(colemickens): remove these when we finish this one, tired of it being noisy
 #[allow(dead_code)]
 #[allow(unused_variable)]
-fn problem011(n: uint) -> uint {
+fn problem011(n: usize) -> u64 {
   let mut max_product = 0;
   let grid = read_grid();
+
+  let width = grid.get(0).unwrap().len();
 
   // check side by sides
   for line in grid.iter() {
     let line = line.as_slice();
     for chunk in line.windows(n) {
-      let try_product: uint = chunk.iter().fold(1u, |p:uint , &n| p*n);
+      let try_product: u64 = chunk.iter().fold(1u64, |p:u64 , &n| p*n);
       max_product = max(try_product, max_product);
     }
   }
 
   // check diagonals
-  //for row_c in range(0+n-1, grid.len()-n+1) { 
+  //for row_c in range(0+n-1, grid.len()-n+1) {
   //  for col_c in range(0+n-1, grid.len()-n+1) {
   //    let try_product = check_position(grid, row_c, col_c, n);
-  //    max_product = max(try_product, max_product); 
+  //    max_product = max(try_product, max_product);
   //  }
   //}
 
@@ -100,5 +104,5 @@ fn problem011(n: uint) -> uint {
 
 #[test]
 fn test_problem011() {
-  //assert_eq!(problem011(4), 70600674);
+  assert_eq!(problem011(4), 70600674);
 }
