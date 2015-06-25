@@ -16,7 +16,7 @@ rustc 1.2.0-nightly (31d9aee68 2015-06-22)
 cargo 0.3.0-nightly (87b5bfd 2015-06-21) (built 2015-06-21)
 ```
 
-I highly recommend the use of multirust to keep your various `rust` toolchains separated cleanly.
+I highly recommend the use of [`multirust`](https://github.com/brson/multirust) to keep your various `rust` toolchains separated cleanly.
 
 ## Testing
 
