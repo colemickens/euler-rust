@@ -22,15 +22,16 @@ What is the value of the first triangle number to have over five hundred divisor
 
 /*
 28 = 2 * 2 * 7
-28 has five factors: 1, 2, 7, (2*2), (7*2), (7*2*2)
+28 has six factors: 1, 2, 7, (2*2), (7*2), (7*2*2)
 
-28 / 2^x + 7^y == 0
-28 / 2^0 + 7^0 == 0
-28 / 2^1 + 7^0 == 0
-28 / 2^2 + 7^0 == 0 
-28 / 2^0 + 7^1 == 0
-28 / 2^1 + 7^1 == 0
-28 / 2^2 + 7^1 == 0
+28 / 2^x + 7^y : remainder of 0
+-------------------------------
+28 / 2^0 + 7^0 : remainder of 0
+28 / 2^1 + 7^0 : remainder of 0
+28 / 2^2 + 7^0 : remainder of 0
+28 / 2^0 + 7^1 : remainder of 0
+28 / 2^1 + 7^1 : remainder of 0
+28 / 2^2 + 7^1 : remainder of 0
 
 So y varies between the potential values of 7^y, since 7 can be a factor of 28 zero or once. (1, 7)
 x vaires between the potential values of 2^x, which can appear as a factor zero, one or two times (1, 2, 4)
@@ -38,27 +39,28 @@ x vaires between the potential values of 2^x, which can appear as a factor zero,
 So then it's (3 choose 1) * (2 choose 1) == (3 * 2) == 6
 */
 
-extern crate euler;
-use euler::{count_factors, prime_factors};
-use std::iter::MultiplicativeIterator;
+#![feature(iter_arith)]
 
-fn problem012(threshold: uint) -> uint {
-  let mut triangle_sum = 0u; 
-  let mut count = 1u;
+extern crate euler;
+use euler::primes::{count_factors, prime_factors};
+
+fn problem012(threshold: u64) -> u64 {
+  let mut triangle_sum = 0u64;
+  let mut count = 1u64;
   loop {
     triangle_sum = triangle_sum + count;
-    
+    count = count + 1;
+
     let primes_and_pows = count_factors(&prime_factors(triangle_sum));
-    
-    let num_of_factors = primes_and_pows
+
+    let num_of_factors: u64 = primes_and_pows
       .iter()
-      .map(|(_, &power)| power+1) // we add one since 1 isn't returned as a factor (n^0 == 1)
+      .map(|(_, &power)| power+1) // we add one to compensate for the factor raised to the zeroth power
       .product();
-    
+
     if num_of_factors > threshold {
       return triangle_sum;
     }
-    count = count + 1;
   }
 }
 
